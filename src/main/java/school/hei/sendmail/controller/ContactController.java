@@ -11,7 +11,7 @@ import jakarta.annotation.Resource;
 import school.hei.sendmail.dto.ContactRequest;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping
 @CrossOrigin(origins = "*")
 public class ContactController {
 
@@ -24,7 +24,7 @@ public class ContactController {
     @Value("${app.email.from}")
     private String fromEmail;
 
-    @PostMapping("/contact")
+    @PostMapping
     public ResponseEntity<String> submitContact(@Valid @RequestBody ContactRequest request) {
         System.out.println("Nouveau contact de : " + request.getName() + " <" + request.getEmail() + ">");
 
@@ -45,8 +45,7 @@ public class ContactController {
                 request.getEmail(),
                 request.getPhone(),
                 request.getSubject(),
-                request.getProject()
-        ));
+                request.getProject()));
 
         try {
             mailSender.send(message);
