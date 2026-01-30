@@ -1,0 +1,5 @@
+# Build sans cache
+docker build --no-cache -t sendmail-app .
+
+# Nettoyer le système Docker
+docker system prune -a
